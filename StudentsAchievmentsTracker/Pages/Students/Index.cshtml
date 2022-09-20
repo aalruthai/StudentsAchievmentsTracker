@@ -1,0 +1,43 @@
+﻿@page
+@model StudentsAchievmentsTracker.Pages.Students.IndexModel
+@section styles{
+    <abp-style src="/Pages/Index.cshtml.css" />
+}
+    @section scripts {
+    <abp-script src="/Pages/Index.cshtml.js" />
+}
+
+    <div class="container">
+        <abp-card>
+            <abp-card-header>
+                <abp-card-title>
+                    Students
+                </abp-card-title>
+            </abp-card-header>
+            <abp-card-body>
+                <form id="NewItemForm" class="row row-cols-lg-auto g-3 align-items-center">
+                    <div class="col-12">
+                        <div class="input-group">
+                            <input type="text" id="NewStudentName" placeholder="Student Name" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="input-group">
+                            <input type="text" id="NewStudentId" placeholder="Student Id" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+                <ul id="StudentsList">
+                    @foreach (var student in Model.Students)
+                    {
+                        <li data-id="@student.Id">
+                        <i class="fa fa-trash-o"></i> @student.StudentId : @student.StudentName
+                        </li>
+                    }
+                </ul>
+            </abp-card-body>
+        </abp-card>
+    </div>
